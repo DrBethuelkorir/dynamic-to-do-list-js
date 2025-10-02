@@ -13,36 +13,36 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Task Creation and Removal - EXACTLY as specified
+        // Task Creation and Removal
         if (taskText !== "") {
-            // Create new li element and set textContent
+            // Create new li element
             const li = document.createElement('li');
-            li.textContent = taskText; // MUST use textContent
+            li.textContent = taskText;
             
-            // Create remove button with exact specifications
+            // Create remove button
             const removeButton = document.createElement('button');
             removeButton.textContent = "Remove";
-            removeButton.className = 'remove-btn'; // MUST use className
+            removeButton.className = 'remove-btn'; // FIXED: Use className instead of classList.add
             
-            // Assign onclick event that removes from taskList
+            // Assign onclick event to remove button
             removeButton.onclick = function() {
-                taskList.removeChild(li); // MUST remove from taskList
+                taskList.removeChild(li);
             };
             
-            // Append in correct order
+            // Append remove button to li, then li to taskList
             li.appendChild(removeButton);
             taskList.appendChild(li);
             
-            // Clear input field
+            // Clear the task input field
             taskInput.value = "";
         }
     }
 
-    // Attach Event Listeners - EXACTLY as specified
+    // Attach Event Listeners
     addButton.addEventListener('click', addTask);
     
     taskInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') { // MUST be 'keypress' and check event.key
+        if (event.key === 'Enter') {
             addTask();
         }
     });
